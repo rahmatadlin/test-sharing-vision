@@ -1,0 +1,292 @@
+{
+  "info": {
+    "_postman_id": "article-api-collection",
+    "name": "Article API",
+    "description": "Collection for testing Article API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Article",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Getting Started with Go Programming Language\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Programming\",\n    \"status\": \"publish\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/article/",
+          "host": ["{{base_url}}"],
+          "path": ["article", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Articles (Pagination)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/article/list/10/0",
+          "host": ["{{base_url}}"],
+          "path": ["article", "list", "10", "0"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Article by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/article/1",
+          "host": ["{{base_url}}"],
+          "path": ["article", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Article (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Updated: Getting Started with Go Programming Language\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This updated article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Programming\",\n    \"status\": \"draft\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/article/1",
+          "host": ["{{base_url}}"],
+          "path": ["article", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Article (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Updated: Getting Started with Go Programming Language\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This updated article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Programming\",\n    \"status\": \"publish\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/article/1",
+          "host": ["{{base_url}}"],
+          "path": ["article", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Article (PATCH)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Updated: Getting Started with Go Programming Language\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This updated article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Programming\",\n    \"status\": \"thrash\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/article/1",
+          "host": ["{{base_url}}"],
+          "path": ["article", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Article (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/article/1",
+          "host": ["{{base_url}}"],
+          "path": ["article", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Article (POST)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/article/1/delete",
+          "host": ["{{base_url}}"],
+          "path": ["article", "1", "delete"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Validation Tests",
+      "item": [
+        {
+          "name": "Create Article - Invalid Title (Too Short)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Short Title\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Programming\",\n    \"status\": \"publish\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/article/",
+              "host": ["{{base_url}}"],
+              "path": ["article", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Article - Invalid Content (Too Short)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Getting Started with Go Programming Language\",\n    \"content\": \"Short content\",\n    \"category\": \"Programming\",\n    \"status\": \"publish\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/article/",
+              "host": ["{{base_url}}"],
+              "path": ["article", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Article - Invalid Category (Too Short)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Getting Started with Go Programming Language\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Go\",\n    \"status\": \"publish\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/article/",
+              "host": ["{{base_url}}"],
+              "path": ["article", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Article - Invalid Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Getting Started with Go Programming Language\",\n    \"content\": \"Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. This article will guide you through the basics of Go programming language and help you get started with your first Go application. We will cover topics such as variables, functions, structs, interfaces, and goroutines. By the end of this article, you will have a solid foundation to start building Go applications.\",\n    \"category\": \"Programming\",\n    \"status\": \"invalid_status\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/article/",
+              "host": ["{{base_url}}"],
+              "path": ["article", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}
