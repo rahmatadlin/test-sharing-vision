@@ -82,6 +82,7 @@ func (h *PostHandler) GetPosts(c *gin.Context) {
 	var response []models.PostResponse
 	for _, post := range posts {
 		response = append(response, models.PostResponse{
+			ID:          post.ID,
 			Title:       post.Title,
 			Content:     post.Content,
 			Category:    post.Category,
@@ -124,6 +125,7 @@ func (h *PostHandler) GetPostByID(c *gin.Context) {
 
 	// Return post in response format
 	response := models.PostResponse{
+		ID:          post.ID,
 		Title:       post.Title,
 		Content:     post.Content,
 		Category:    post.Category,
@@ -218,14 +220,18 @@ func (h *PostHandler) DeletePost(c *gin.Context) {
 		return
 	}
 
-	// Delete post (hard delete)
-	if err := h.db.Unscoped().Delete(&post).Error; err != nil {
+	// Move to trash: update status to thrash
+	updates := map[string]interface{}{
+		"status": "thrash",
+	}
+
+	if err := h.db.Model(&post).Updates(updates).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error": "Failed to delete post: " + err.Error(),
+			"error": "Failed to move post to trash: " + err.Error(),
 		})
 		return
 	}
 
 	// Return empty response as specified
-	c.Status(http.StatusNoContent)
+	c.JSON(http.StatusOK, gin.H{})
 }

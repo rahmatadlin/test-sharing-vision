@@ -129,7 +129,7 @@ const Preview = () => {
       )}
 
       {/* Pagination */}
-      {totalPages > 1 && (
+      {totalPages >= 1 && (
         <div className="mt-8 flex items-center justify-between">
           <div className="flex-1 flex justify-between sm:hidden">
             <button

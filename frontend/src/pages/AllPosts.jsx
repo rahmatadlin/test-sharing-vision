@@ -125,6 +125,7 @@ const AllPosts = () => {
             onEdit={handleEdit}
             onDelete={handleDelete}
             loading={loading}
+            activeTab={activeTab}
           />
         </div>
       </div>

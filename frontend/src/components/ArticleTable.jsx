@@ -1,6 +1,6 @@
 import { Edit, Trash2 } from "lucide-react";
 
-const ArticleTable = ({ articles, onEdit, onDelete, loading }) => {
+const ArticleTable = ({ articles, onEdit, onDelete, loading, activeTab }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-8">
@@ -42,17 +42,17 @@ const ArticleTable = ({ articles, onEdit, onDelete, loading }) => {
         <tbody className="bg-white divide-y divide-gray-200">
           {articles.map((article) => (
             <tr key={article.id} className="hover:bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-6 py-4 whitespace-nowrap text-left">
                 <div className="text-sm font-medium text-gray-900">
                   {article.title}
                 </div>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-6 py-4 whitespace-nowrap text-left">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                   {article.category}
                 </span>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-6 py-4 whitespace-nowrap text-left">
                 <span
                   className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                     article.status === "publish"
@@ -65,26 +65,28 @@ const ArticleTable = ({ articles, onEdit, onDelete, loading }) => {
                   {article.status}
                 </span>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-6 py-4 whitespace-nowrap text-left text-sm text-gray-500">
                 {new Date(article.created_date).toLocaleDateString()}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <div className="flex justify-end space-x-2">
-                  <button
-                    onClick={() => onEdit(article)}
-                    className="text-blue-600 hover:text-blue-900 p-1 rounded hover:bg-blue-50"
-                    title="Edit"
-                  >
-                    <Edit className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={() => onDelete(article.id)}
-                    className="text-red-600 hover:text-red-900 p-1 rounded hover:bg-red-50"
-                    title="Delete"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
+                {activeTab !== "thrash" && (
+                  <div className="flex justify-end space-x-2">
+                    <button
+                      onClick={() => onEdit(article)}
+                      className="text-blue-600 hover:text-blue-900 p-1 rounded hover:bg-blue-50"
+                      title="Edit"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </button>
+                    <button
+                      onClick={() => onDelete(article.id)}
+                      className="text-red-600 hover:text-red-900 p-1 rounded hover:bg-red-50"
+                      title="Delete"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
               </td>
             </tr>
           ))}

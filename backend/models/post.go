@@ -6,7 +6,7 @@ import (
 
 // Post represents the posts table in the database
 type Post struct {
-	ID          uint      `json:"id" gorm:"primaryKey;autoIncrement"`
+	ID          uint      `json:"id" gorm:"primaryKey;column:id;autoIncrement"`
 	Title       string    `json:"title" gorm:"type:varchar(200);not null" validate:"required,min=20"`
 	Content     string    `json:"content" gorm:"type:text;not null" validate:"required,min=200"`
 	Category    string    `json:"category" gorm:"type:varchar(100);not null" validate:"required,min=3"`
@@ -38,6 +38,7 @@ type UpdatePostRequest struct {
 
 // PostResponse represents the response body for a post
 type PostResponse struct {
+	ID          uint      `json:"id"`
 	Title       string    `json:"title"`
 	Content     string    `json:"content"`
 	Category    string    `json:"category"`
